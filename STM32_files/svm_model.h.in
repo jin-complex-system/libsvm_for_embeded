@@ -7,6 +7,12 @@
 #define TOTAL_SV @{total_sv}
 #define NR_CLASSIFER(nc) (nc*(nc-1)/2)
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+extern "C" {
+#endif
+//DOM-IGNORE-END
+
 typedef struct {
     uint8_t kernel_type;
     //-- for polynomial kernel -->
@@ -60,8 +66,14 @@ int32_t @{prefix}multi_predict(const @{prefix}Model* svm_model, const float* x, 
  * @param[in]  len        x length
  * @param[out] scores_buf probability of each score
  * @param[in]  scores_buf_len  length of scores buf
+ * @return     int32_t    label_index
  */
 int32_t @{prefix}multi_predict_probability(const @{prefix}Model *svm_model, const float* x, int len, float* scores_buf, int scores_buf_len);
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+};
+#endif
+//DOM-IGNORE-END
 
 #endif

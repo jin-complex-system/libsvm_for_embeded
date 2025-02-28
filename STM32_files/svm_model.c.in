@@ -334,5 +334,5 @@ int32_t @{prefix}multi_predict_probability(const @{prefix}Model *svm_model, cons
     }
     for (i = 0; i < NR_CLASS; i++)
         scores_buf[i] = (float)scores[i];
-    return svm_model->label[prob_max_idx];
+    return prob_max_idx;
 }
