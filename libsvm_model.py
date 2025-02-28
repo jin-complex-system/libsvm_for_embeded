@@ -70,7 +70,12 @@ class Model:
         self.var_map["@{coefs}"] = self.insert_newline(self.coefs, 10)
 
         for SV in self.SVs:
-            self.var_map["@{SVs}"] += str(SV).lstrip('[').rstrip(']') + ',\n'
+            SV_string = ""
+            for value in SV:
+                SV_string += "{}f, ".format(float(value))
+            assert(SV_string is not None and len(SV_string) > 0)
+
+            self.var_map["@{SVs}"] += SV_string + '\n'
         self.var_map["@{svm_type}"] = self.svm_type
         kernel_type_mapping = {'linear': 'KERNEL_LINEAR', 'polynomial': 'KERNEL_POLYNOMIAL', 'rbf': 'KERNEL_RBF'}
         self.var_map["@{kernel_type}"] = kernel_type_mapping[self.kernel_type] \
