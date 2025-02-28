@@ -4,11 +4,6 @@
 #define MAX(x, y) ((x)>(y))?(x):(y)
 #define MIN(x, y) ((x)<(y))?(x):(y)
 
-#define KERNEL_UNKNOWN 0
-#define KERNEL_LINEAR  1
-#define KERNEL_POLYNOMIAL 2
-#define KERNEL_RBF 3
-
 typedef float (*KernelHandle)(const float *xi, const float *x, const @{prefix}Model *model);
 
 static int32_t g_label[NR_CLASS] = {

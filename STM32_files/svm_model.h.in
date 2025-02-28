@@ -7,6 +7,11 @@
 #define TOTAL_SV @{total_sv}
 #define NR_CLASSIFER(nc) (nc*(nc-1)/2)
 
+#define KERNEL_UNKNOWN 0
+#define KERNEL_LINEAR  1
+#define KERNEL_POLYNOMIAL 2
+#define KERNEL_RBF 3
+
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
 extern "C" {
