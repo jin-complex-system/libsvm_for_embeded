@@ -133,7 +133,21 @@ class Model:
             svs =svl.split(' ')
             for ki in range(k-1):
                 self.coefs[ki, li] = svs[ki]
-            sv = [float(x.split(':')[-1]) for x in svs[k-1:]]
+            
+            # Get the number of support vectors from the last entry of svs
+            last_sv_entry = svs[len(svs) - 1]
+            sv_length = int(last_sv_entry.split(':')[0])
+            assert(sv_length > 0)
+
+            sv = [0] * (sv_length)
+            for x in svs[k-1:]:
+                index, value = x.split(':')
+                index = int(index)
+                value = float(value)
+
+                assert(index > 0 and index <= sv_length)
+
+                sv[index - 1] = value
             self.SVs.append(sv)
 
         self.refresh_var_map()
@@ -148,6 +162,7 @@ class Model:
             path_split = name_ext[0].split('/')
             path_split[-1] = self.prefix + path_split[-1]
             dst_name = '/'.join(path_split)
+            
             # find @{varname} in src file, replace them, and generate new file
             with open(src_name, 'rt') as f:
                 lines = f.readlines()
