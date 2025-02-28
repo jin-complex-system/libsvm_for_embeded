@@ -81,7 +81,7 @@ class Model:
         self.var_map["@{kernel_type}"] = kernel_type_mapping[self.kernel_type] \
             if self.kernel_type in kernel_type_mapping else 'KERNEL_UNKNOWN'
         self.var_map["@{degree}"] = str(self.degree)
-        self.var_map["@{gamma}"] = str(self.gamma)
+        self.var_map["@{gamma}"] = "{}f".format(float(self.gamma))
         self.var_map["@{coef0}"] = str(self.coef0)
         self.var_map["@{nr_class}"] = str(self.nr_class)
         self.var_map["@{nr_sv}"] = str(self.nr_sv).lstrip('[').rstrip(']')

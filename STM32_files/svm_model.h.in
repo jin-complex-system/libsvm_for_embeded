@@ -60,7 +60,7 @@ float @{prefix}predict_probability(const @{prefix}Model *svm_model, const float*
  * @param svm_model   SVM model
  * @param x           input x feature
  * @param len         x length
- * @return int32_t    return label
+ * @return int32_t    return label_index
  */
 int32_t @{prefix}multi_predict(const @{prefix}Model* svm_model, const float* x, int len);
 
